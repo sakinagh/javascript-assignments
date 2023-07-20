@@ -1,8 +1,4 @@
-# README for HS.example1 #
-
-This is the README file for the HS.example1 app. It's a great place to write
-down some notes about how your app works. For starters, here is some information
-about the other files in this folder.
+# README for Quote Designer app #
 
 The files in this folder contain everything you need to run your app:
 
