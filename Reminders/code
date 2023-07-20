@@ -1,0 +1,39 @@
+//Declaring the variables.
+var reminderList = [] ;
+var index = 0;
+
+//Code for showing the intro text on screen.
+updateScreen();
+
+//Code for adding a reminder to the list and screen.
+onEvent("addButton", "click", function( ) {
+  appendItem(reminderList, getText("reminderInput"));
+  setProperty("reminderInput", "text", "");
+  updateScreen();
+});
+
+//Code for navigating the different screens.
+onEvent("rightButton", "click", function( ) {
+  if (index < reminderList.length - 1) {
+    index = index + 1;
+    updateScreen();
+  }
+});
+
+onEvent("leftButton", "click", function( ) {
+  if (index > 0) {
+    index = index - 1;
+    updateScreen();
+  }
+});
+
+//Code for showing the reminder on the screen.
+function updateScreen() {
+  if (reminderList.length < 1) {
+    setProperty("reminderOutput", "text", "Add reminders!");
+  } else {
+    setProperty("reminderOutput", "text", reminderList[index]);
+    setProperty("countOutput", "text", index + 1);
+  }
+}
+
