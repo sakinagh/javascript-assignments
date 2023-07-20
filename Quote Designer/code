@@ -1,0 +1,45 @@
+//Stating the variables for the code.
+var color;
+var fontFamily;
+var fontSize;
+var quote;
+
+//Code for selecting font color.
+onEvent("colorInput", "change", function( ) {
+  color = getText("colorInput");
+  setProperty("colorOutput", "background-color", color);
+  setProperty("quoteOutput", "background-color", color);
+  checkCombos();
+});
+
+//Code for selecting the type of font.
+onEvent("fontFamilyInput", "change", function( ) {
+  fontFamily = getText("fontFamilyInput");
+  setProperty("quoteOutput", "font-family", fontFamily);
+  checkCombos();
+});
+
+//Code for changing the size of the quote.
+onEvent("fontSizeInput", "input", function( ) {
+  fontSize = getNumber("fontSizeInput");
+  setProperty("quoteOutput", "font-size", fontSize);
+  checkCombos();
+});
+
+//Code for the user inputting a quote.
+onEvent("quoteInput", "input", function( ) {
+  quote = getText("quoteInput");
+  setText("quoteOutput", quote);
+  checkCombos();
+});
+
+//Code for feedback at the bottom of the screen.
+function checkCombos() {
+  if (color == "lightblue" && fontFamily == "Verdana") {
+    setText("feedbackOutput", "That's pretty cool!");
+  } else if ((color == "lightgreen" && fontFamily == "Impact")) {
+    setText("feedbackOutput", "Very unique!");
+  } else {
+    setText("feedbackOutput", "Very pretty!");
+  }
+}
