@@ -1,0 +1,47 @@
+// Build the Random Forecaster app
+//Declaring the list variables.
+var cityList = getColumn("Daily Weather", "City");
+var iconList = getColumn("Daily Weather", "Icon");
+var conditionList = getColumn("Daily Weather", "Main Condition");
+var lowList = getColumn("Daily Weather", "Low Temperature");
+var highList = getColumn("Daily Weather", "High Temperature");
+var forecastList = getColumn("Daily Weather", "Forecast Number");
+
+//Creating the lists for the filtered lists in the traversals.
+var tomorrowCity = [];
+var tomorrowHigh = [];
+var tomorrowLow = [];
+var tomorrowCondition = [];
+var tomorrowIcon = [];
+
+//Calling the function so that the weather can be output.
+tomorrowWeather();
+
+//Code for the button to show the output when clicked.
+onEvent("forecastButton", "click", function( ) {
+  updateScreen();
+});
+
+//Code of loop and traversal to create the forecast using the lists.
+function tomorrowWeather() {
+  for (var i = 0; i < cityList.length; i++) {
+    if (forecastList[i] == 1) {
+      appendItem(tomorrowCity, cityList[i]);
+      appendItem(tomorrowHigh, highList[i]);
+      appendItem(tomorrowLow, lowList[i]);
+      appendItem(tomorrowCondition, conditionList[i]);
+      appendItem(tomorrowIcon, iconList[i]);
+    }
+  }
+}
+
+//Code for updating the screen outputs based on the list elements in forecast.
+function updateScreen() {
+  var index = randomNumber(1, tomorrowCity.length - 1);
+  setText("cityOutput", tomorrowCity[index]);
+  setText("highTempOutput", tomorrowHigh[index]);
+  setText("lowTempOutput", tomorrowLow[index]);
+  setText("conditionOutput", tomorrowCondition[index]);
+  setProperty("iconOutput", "image", tomorrowIcon[index]);
+}
+
