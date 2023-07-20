@@ -1,8 +1,4 @@
-# README for HS.example6 #
-
-This is the README file for the HS.example6 app. It's a great place to write
-down some notes about how your app works. For starters, here is some information
-about the other files in this folder.
+# README for Forecast Randomizer App #
 
 The files in this folder contain everything you need to run your app:
 
